@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables CSS personnalisées */
+:root {
+  --primary-50: #F0F3FF;
+  --primary-500: #1E2A78;
+  --primary-600: #1A2468;
+  --secondary-400: #4F7CAC;
+  --accent-400: #F4D35E;
+  --neutral-200: #E5E8EB;
+}
+
+/* Styles de base améliorés */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    color: theme('colors.gray.800');
+    background-color: theme('colors.white');
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', 'Poppins', system-ui, sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  
+  /* Amélioration de la lisibilité */
+  p {
+    margin-bottom: 1rem;
+  }
+  
+  /* Focus states améliorés pour l'accessibilité */
+  *:focus {
+    outline: 2px solid theme('colors.primary.500');
+    outline-offset: 2px;
+  }
+}
+
+/* Composants personnalisés */
+@layer components {
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg focus:ring-4 focus:ring-primary-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary-400 hover:bg-secondary-500 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white font-medium py-3 px-6 rounded-lg transition-all duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-soft p-6 border border-neutral-200/50;
+  }
+  
+  .card-hover {
+    @apply card hover:shadow-medium transition-all duration-300 hover:-translate-y-1;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 border border-neutral-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200;
+  }
+  
+  .section-padding {
+    @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-500 to-secondary-400 bg-clip-text text-transparent;
+  }
+  
+  .glass-card {
+    @apply glass backdrop-blur-xl border border-white/20 rounded-2xl p-6;
+  }
+}
+
+/* Utilitaires personnalisés */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+}
+
+/* Animations personnalisées */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Responsive design amélioré */
+@media (max-width: 640px) {
+  .section-padding {
+    @apply py-12 px-4;
+  }
+}
+
+/* Mode sombre */
+@media (prefers-color-scheme: dark) {
+  .dark body {
+    @apply bg-dark-50 text-dark-900;
+  }
+  
+  .dark .card {
+    @apply bg-dark-100 border-dark-200;
+  }
+}
